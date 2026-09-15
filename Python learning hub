@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Learning Hub - Unit 1</title>
+<style>
+  :root {
+    --blue: #1769aa;
+    --dark-blue: #0d47a1;
+    --yellow: #ffd343;
+    --ink: #172033;
+    --muted: #64748b;
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --border: #dbe4ef;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--dark-blue), var(--blue));
+    color: white;
+    padding: 18px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 3px 14px rgba(0,0,0,.15);
+  }
+
+  .nav {
+    max-width: 1180px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.35rem;
+    font-weight: 800;
+  }
+
+  .python-mark {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: var(--yellow);
+    color: #1d3557;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 1.1rem;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+  }
+
+  nav a:hover { color: var(--yellow); }
+
+  .hero {
+    background: white;
+    padding: 64px 6%;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-inner {
+    max-width: 1180px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    color: var(--blue);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: .82rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3.7rem);
+    line-height: 1.1;
+    margin: 12px 0 18px;
+  }
+
+  .hero p {
+    color: var(--muted);
+    max-width: 680px;
+    font-size: 1.08rem;
+  }
+
+  .code-box {
+    background: #101827;
+    color: #d9f99d;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 18px 45px rgba(15,23,42,.2);
+    font-family: Consolas, monospace;
+    overflow: auto;
+  }
+
+  .code-box .comment { color: #94a3b8; }
+  .code-box .keyword { color: #f9a8d4; }
+  .code-box .string { color: #fde68a; }
+  .code-box .function { color: #93c5fd; }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 6%;
+  }
+
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 22px;
+  }
+
+  .section-heading h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+  }
+
+  .section-heading p {
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .unit-card {
+    background: linear-gradient(145deg, #ffffff, #f7fbff);
+    border: 1px solid #c9dced;
+    border-left: 8px solid var(--blue);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 38px;
+    box-shadow: 0 10px 28px rgba(30,64,175,.08);
+  }
+
+  .unit-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .unit-label {
+    display: inline-block;
+    background: var(--yellow);
+    color: #263238;
+    font-size: .78rem;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+
+  .unit-card h3 {
+    margin: 0;
+    color: var(--dark-blue);
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    line-height: 1.25;
+  }
+
+  .unit-description {
+    color: var(--muted);
+    margin: 10px 0 0;
+  }
+
+  .unit-icon {
+    min-width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: #e3f2fd;
+    color: var(--dark-blue);
+    font-size: 1.65rem;
+    font-weight: 900;
+  }
+
+  .topics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .topic {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 17px;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+
+  .topic:hover {
+    transform: translateY(-4px);
+    border-color: #7db5df;
+    box-shadow: 0 8px 20px rgba(30,64,175,.1);
+  }
+
+  .topic strong {
+    display: block;
+    color: var(--dark-blue);
+    margin-bottom: 5px;
+  }
+
+  .topic span {
+    color: var(--muted);
+    font-size: .9rem;
+  }
+
+  .unit-footer {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .tag {
+    background: #eef6ff;
+    color: #135a91;
+    padding: 7px 11px;
+    border-radius: 8px;
+    font-size: .84rem;
+    font-weight: 700;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .card h3 { margin-top: 0; color: var(--dark-blue); }
+  .card p { color: var(--muted); }
+
+  .button {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--blue);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+
+  .button:hover { background: var(--dark-blue); }
+
+  footer {
+    text-align: center;
+    padding: 28px 6%;
+    color: var(--muted);
+    background: white;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .topics { grid-template-columns: repeat(2, 1fr); }
+    .cards { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 14px 5%; }
+    .nav { align-items: flex-start; flex-direction: column; }
+    nav a { margin: 0 14px 0 0; }
+    .hero { padding: 42px 5%; }
+    main { padding: 34px 5%; }
+    .unit-card { padding: 22px; }
+    .unit-top { flex-direction: column; }
+    .topics, .cards { grid-template-columns: 1fr; }
+  }
+
+  .questions-section {
+    margin-top: 38px;
+    background: linear-gradient(145deg, #ffffff, #f7fbff);
+    border: 1px solid #c9dced;
+    border-left: 8px solid #0d47a1;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 28px rgba(30,64,175,.08);
+  }
+
+  .questions-section h2 {
+    margin: 0;
+    color: #0d47a1;
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    line-height: 1.25;
+  }
+
+  .questions-intro {
+    color: #64748b;
+    margin: 10px 0 22px;
+  }
+
+  .question-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    counter-reset: short-question;
+  }
+
+  .question-item {
+    counter-increment: short-question;
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #dbe4ef;
+    border-radius: 14px;
+    padding: 17px 17px 17px 52px;
+    color: #172033;
+    min-height: 76px;
+  }
+
+  .question-item::before {
+    content: counter(short-question);
+    position: absolute;
+    left: 16px;
+    top: 17px;
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #ffd343;
+    color: #263238;
+    font-weight: 900;
+    font-size: .85rem;
+  }
+
+  .question-item strong {
+    display: block;
+    color: #135a91;
+    margin-bottom: 4px;
+    font-size: .92rem;
+  }
+
+  .question-item span {
+    color: #334155;
+    font-size: .95rem;
+  }
+
+  .answer-note {
+    margin-top: 22px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: #eef6ff;
+    color: #135a91;
+    font-size: .92rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 700px) {
+    .question-list {
+      grid-template-columns: 1fr;
+    }
+
+    .questions-section {
+      padding: 22px;
+    }
+  }
+
+  
+    .question-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: inherit;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .question-link strong {
+      display: block;
+      color: var(--dark-blue);
+    }
+
+    .question-arrow {
+      color: var(--blue);
+      font-weight: 700;
+      white-space: nowrap;
+      font-size: 0.92rem;
+    }
+
+    .question-link:hover .question-arrow {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .question-link {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+  
+    .answer-page {
+      display: none;
+      min-height: 70vh;
+      padding: 36px 20px 60px;
+      background: var(--bg);
+    }
+
+    .answer-page.active {
+      display: block;
+    }
+
+    .answer-page-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(22px, 4vw, 40px);
+      box-shadow: 0 8px 24px rgba(13, 71, 161, 0.08);
+    }
+
+    .answer-label {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .answer-page h2 {
+      color: var(--dark-blue);
+      line-height: 1.4;
+    }
+
+    .answer-page h3 {
+      color: var(--blue);
+      margin-top: 24px;
+    }
+
+    .answer-page p {
+      line-height: 1.8;
+    }
+
+    .answer-page code {
+      background: #eef4fb;
+      color: #0d47a1;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: Consolas, monospace;
+    }
+
+    .back-link {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    body.answer-mode > *:not(#answer-q1) {
+      display: none !important;
+    }
+
+  
+    .object-characteristic {
+      margin: 18px 0;
+      padding: 16px 18px;
+      border-left: 4px solid var(--blue, #1769aa);
+      background: #f4f7fb;
+      border-radius: 10px;
+    }
+
+    .object-characteristic h4 {
+      margin: 0 0 8px;
+      color: var(--dark-blue, #0d47a1);
+      font-size: 1.08rem;
+    }
+
+    .object-characteristic ul {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .object-characteristic li {
+      margin: 6px 0;
+    }
+
+  
+    .realtime-code-box { margin: 24px 0; }
+    .realtime-controls {
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 12px; margin-top: 12px;
+    }
+    .run-python-btn {
+      border: none; border-radius: 10px; padding: 10px 17px;
+      background: #1769aa; color: #fff; font-weight: 800; cursor: pointer;
+    }
+    .run-python-btn:hover { background: #0d47a1; }
+    .run-python-btn:disabled { opacity: .65; cursor: wait; }
+    .runtime-status { color: #64748b; font-size: .9rem; font-weight: 600; }
+    .python-output {
+      margin: 14px 0 0; padding: 16px; min-height: 70px;
+      white-space: pre-wrap; overflow-x: auto; border-radius: 12px;
+      background: #101827; color: #d9f99d;
+      font-family: Consolas, monospace; line-height: 1.6;
+    }
+</style>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js"></script>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="python-mark">Py</div>
+      <span>Python Learning Hub</span>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#unit1">Unit 1</a>
+      <a href="#resources">Resources</a>
+      <a href="#short-answers">Short Questions</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Programming Fundamentals</div>
+      <h1>Learn Python from the Basics</h1>
+      <p>
+        Build a strong foundation in Python by understanding objects, numbers,
+        sequences, expressions, variables, and core programming concepts.
+      </p>
+      <a class="button" href="#unit1">Explore Unit 1</a>
+    </div>
+    <div class="code-box" aria-label="Python code example">
+      <div><span class="comment"># Python basics</span></div>
+      <div><span class="keyword">name</span> = <span class="string">"Python"</span></div>
+      <div><span class="keyword">numbers</span> = [1, 2, 3, 4, 5]</div>
+      <div><span class="function">print</span>(name)</div>
+      <div><span class="function">print</span>(numbers)</div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="section-heading">
+    <div>
+      <h2>Course Units</h2>
+      <p>Start your Python journey with the foundational concepts in Unit 1.</p>
+    </div>
+  </div>
+
+  <section class="unit-card" id="unit1" aria-labelledby="unit1-title">
+    <div class="unit-top">
+      <div>
+        <div class="unit-label">UNIT-1</div>
+        <h3 id="unit1-title">PYTHON BASICS, OBJECTS, NUMBERS &amp; SEQUENCES</h3>
+        <p class="unit-description">
+          This unit introduces the Python programming environment and the
+          fundamental objects and data structures used to write Python programs.
+        </p>
+      </div>
+      <div class="unit-icon" aria-hidden="true">&lt;/&gt;</div>
+    </div>
+
+    <div class="topics">
+      <div class="topic">
+        <strong>Python Basics</strong>
+        <span>Features, syntax, indentation, comments, keywords, identifiers, and variables.</span>
+      </div>
+      <div class="topic">
+        <strong>Python Objects</strong>
+        <span>Object identity, type, mutability, references, assignment, and built-in objects.</span>
+      </div>
+      <div class="topic">
+        <strong>Numbers</strong>
+        <span>Integers, floating-point numbers, complex numbers, operators, and numeric functions.</span>
+      </div>
+      <div class="topic">
+        <strong>Sequences</strong>
+        <span>Strings, lists, tuples, indexing, slicing, iteration, and sequence operations.</span>
+      </div>
+      <div class="topic">
+        <strong>Expressions</strong>
+        <span>Arithmetic, comparison, logical, membership, identity, and bitwise expressions.</span>
+      </div>
+      <div class="topic">
+        <strong>Input &amp; Output</strong>
+        <span>Using input(), print(), formatted output, and basic type conversion.</span>
+      </div>
+      <div class="topic">
+        <strong>String Basics</strong>
+        <span>String creation, escape sequences, concatenation, repetition, and formatting.</span>
+      </div>
+      <div class="topic">
+        <strong>Sequence Methods</strong>
+        <span>Common methods and functions for searching, counting, joining, and modifying data.</span>
+      </div>
+    </div>
+
+    <div class="unit-footer">
+      <span class="tag">Beginner Level</span>
+      <span class="tag">Theory + Examples</span>
+      <span class="tag">Practice Questions</span>
+      <span class="tag">Core Python</span>
+    </div>
+  </section>
+
+
+  <section class="questions-section" id="short-answers" aria-labelledby="short-answer-title">
+    <h2 id="short-answer-title">SHORT ANSWER TYPE QUESTIONS</h2>
+    <p class="questions-intro">
+      Answer the following questions briefly using the concepts covered in Unit 1:
+      Python Basics, Objects, Numbers, Expressions, and Sequences.
+    </p>
+
+    
+        
+      </article>
+      <article class="question-item">
+        <a class="question-link" href="#answer-q1" onclick="showAnswerPage(event)">
+          <strong>Question 1: Define a Python object and explain how it stores data?</strong>
+          <span class="question-arrow">View Answer →</span>
+        </a>
+      </article>
+      <article class="question-item">
+        <strong>Question 2</strong>
+        <span>What are keywords and identifiers in Python?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 3</strong>
+        <span>What is a variable? How is a variable created in Python?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 4</strong>
+        <span>What is an object in Python?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 5</strong>
+        <span>Explain object identity, type, and value.</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 6</strong>
+        <span>What is the difference between mutable and immutable objects?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 7</strong>
+        <span>List the different types of numbers supported by Python.</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 8</strong>
+        <span>What is the difference between integer, float, and complex numbers?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 9</strong>
+        <span>What is the use of arithmetic operators in Python?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 10</strong>
+        <span>What are expressions? Give one example of a Python expression.</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 11</strong>
+        <span>What is the purpose of the input() and print() functions?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 12</strong>
+        <span>What is a sequence in Python? Give three examples.</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 13</strong>
+        <span>What is indexing? Explain with an example.</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 14</strong>
+        <span>What is slicing in a sequence?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 15</strong>
+        <span>Differentiate between a list and a tuple.</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 16</strong>
+        <span>What is a string? How can strings be created in Python?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 17</strong>
+        <span>What is the use of the len() function?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 18</strong>
+        <span>What is the difference between concatenation and repetition?</span>
+      </article>
+      <article class="question-item">
+        <strong>Question 19</strong>
+        <span>What are membership operators? Name them.</span>
+      </article>
+    </div>
+
+    <div class="answer-note">
+      Preparation Tip: Write each answer in 2–5 sentences and include a small Python example wherever appropriate.
+    </div>
+  </section>
+
+
+  <section id="resources">
+    <div class="section-heading">
+      <div>
+        <h2>Learning Resources</h2>
+        <p>Use these resources to strengthen the concepts covered in Unit 1.</p>
+      </div>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <h3>Python Documentation</h3>
+        <p>Read the official Python documentation for syntax, built-in types, and language reference material.</p>
+        <a class="button" href="https://docs.python.org/3/" target="_blank" rel="noopener">Open Docs</a>
+      </article>
+      <article class="card">
+        <h3>Python Official Website</h3>
+        <p>Explore Python downloads, tutorials, community resources, and current information about Python.</p>
+        <a class="button" href="https://www.python.org/" target="_blank" rel="noopener">Visit Python.org</a>
+      </article>
+      <article class="card">
+        <h3>Practice Focus</h3>
+        <p>Practice variables, number calculations, string operations, list indexing, slicing, and tuple operations.</p>
+        <a class="button" href="#unit1">View Topics</a>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Python Learning Hub &copy; 2026 · Unit 1: Python Basics, Objects, Numbers &amp; Sequences · Short Answer Questions
+</footer>
+
+    <section id="answer-q1" class="answer-page" aria-hidden="true">
+      <div class="answer-page-inner">
+        <a class="back-link" href="#short-answers" onclick="showQuestionsPage(event)">← Back to Short Answer Questions</a>
+        <span class="answer-label">Question 1</span>
+        <h2>Define a Python object and explain how it stores data?</h2>
+        <h3>Python Object - Definition &amp; Data Storage:</h3>
+       <p>
+          In Python, <b> everything is treated as an object </b>, whether it is a number,
+          a string, a list, a function, or even a class. Every object has an identity,
+          a type, and a value. Objects store data in memory, and variables hold
+          references to these objects rather than directly storing the data itself.
+          For example, in <code>x = 10</code>, the integer object <code>10</code>
+          is stored in memory and <code>x</code> refers to that object.
+        </p>
+         <p>
+          An object is a <b>self-contained unit</b> that combines
+          <b>data (attributes)</b> and the <b>operations (methods)</b>
+          that can be performed on that data.
+        </p>
+<h3>Properties of a Python Object:</h3>
+<p>Every object in Python has three essential characteristics:
+</P>
+
+        <section class="object-characteristic">
+          <h4>Identity</h4>
+          <ul>
+            <li>It is a unique identifier for the object.</li>
+            <li>It tells where the object is stored in memory.</li>
+            <li>It can be obtained using the built-in function <code>id()</code>.</li>
+          </ul>
+        </section>
+         <section class="object-characteristic">
+     <h4>Type</h4>
+     <ul>
+       <li>Defines the kind of object.</li>
+       <li>The type determines what operations can be performed on the object.</li>
+       <li>It can be obtained using built-in function <code>type()</code>.</li>
+       </ul>
+       </section>
+        <section class="object-characteristic">
+           <h4>Value</h4>
+          <ul>
+            <li>It is the actual data stored in or represented by an object.</li>
+            <li>For example, if the object is an integer <code>5</code>, its value is <code>5</code>.</li>
+          </ul>
+        </section>
+        
+
+<h3>Example: Identity, Type, and Value of an Object</h3>
+<p>
+  The following example demonstrates the three essential characteristics of
+  a Python object: identity, type, and value.
+</p>
+
+<div class="realtime-code-box" aria-label="Example showing object identity, type, and value">
+  <div class="code-box">
+    <div><span class="comment"># Identity, Type, and Value</span></div>
+    <div><span class="keyword">x</span> = 30</div>
+    <br>
+    <div><span class="function">print</span>(<span class="string">"Identity:"</span>, <span class="function">id</span>(x))</div>
+    <div><span class="function">print</span>(<span class="string">"Type:"</span>, <span class="function">type</span>(x))</div>
+    <div><span class="function">print</span>(<span class="string">"Value:"</span>, x)</div>
+  </div>
+
+  <div class="realtime-controls">
+    <button type="button" class="run-python-btn" id="run-identity-type-value-code">▶ Run Code</button>
+    <span class="runtime-status" id="identity-type-value-status">Python runtime not loaded</span>
+  </div>
+
+  <pre class="python-output" id="identity-type-value-output" aria-live="polite">Click “Run Code” to execute the example.</pre>
+</div>
+
+<p>
+  <b>Note:</b> The identity number returned by <code>id(x)</code> may differ
+  each time the program runs or on different systems. The type of
+  <code>x</code> is <code>int</code>, and its value is <code>30</code>.
+</p>
+
+<h3>Storing of data using Objects</h3>
+<p>
+  Python stores objects in a part of memory called the <b>heap</b>.
+  The heap is the memory area where objects are created and maintained
+  during program execution.
+</p>
+
+<p>
+  When a value is assigned to a variable, Python creates or refers to an
+  object in memory and associates the variable name with a reference to
+  that object.
+</p>
+
+<p>
+  Variables in Python are <b>references or names</b> that point to objects,
+  not the objects themselves. A variable provides a way to access the
+  object stored in memory.
+</p>
+
+<h3>Example: Object Creation and Reference</h3>
+<p>
+  This example creates an integer object, a string object, and a list object.
+  The variables refer to these objects.
+</p>
+
+<div class="realtime-code-box" aria-label="Example of Python object creation and reference">
+  <div class="code-box">
+    <div><span class="comment"># Object creation and reference</span></div>
+    <div><span class="keyword">x</span> = 5</div>
+    <div><span class="keyword">name</span> = <span class="string">"Python"</span></div>
+    <div><span class="keyword">numbers</span> = [1, 2, 3]</div>
+    <br>
+    <div><span class="function">print</span>(x)</div>
+    <div><span class="function">print</span>(name)</div>
+    <div><span class="function">print</span>(numbers)</div>
+  </div>
+  <div class="realtime-controls">
+    <button type="button" class="run-python-btn" id="run-object-creation-code">▶ Run Code</button>
+    <span class="runtime-status" id="object-creation-status">Python runtime not loaded</span>
+  </div>
+  <pre class="python-output" id="object-creation-output" aria-live="polite">Click “Run Code” to execute the example.</pre>
+</div>
+
+<h3>Dynamic Typing in Python</h3>
+<p>
+  Python uses <b>dynamic typing</b>, which means that the type of an object
+  is determined at runtime. Therefore, the same variable can refer to
+  objects of different types during program execution.
+</p>
+
+<div class="realtime-code-box" aria-label="Example of dynamic typing in Python">
+  <div class="code-box">
+    <div><span class="comment"># Dynamic typing</span></div>
+    <div><span class="keyword">value</span> = 10</div>
+    <div><span class="function">print</span>(value)</div>
+    <br>
+    <div><span class="keyword">value</span> = <span class="string">"Python"</span></div>
+    <div><span class="function">print</span>(value)</div>
+  </div>
+  <div class="realtime-controls">
+    <button type="button" class="run-python-btn" id="run-dynamic-typing-code">▶ Run Code</button>
+    <span class="runtime-status" id="dynamic-typing-status">Python runtime not loaded</span>
+  </div>
+  <pre class="python-output" id="dynamic-typing-output" aria-live="polite">Click “Run Code” to execute the example.</pre>
+</div>
+
+<p>
+  Python automatically manages memory using reference counting and garbage
+  collection, reducing the need for manual memory management by the programmer.
+</p>
+
+</div>
+    </section>
+
+    <script>
+      function showAnswerPage(event) {
+        if (event) event.preventDefault();
+        document.body.classList.add('answer-mode');
+        const answerPage = document.getElementById('answer-q1');
+        answerPage.classList.add('active');
+        answerPage.setAttribute('aria-hidden', 'false');
+        window.location.hash = 'answer-q1';
+        window.scrollTo(0, 0);
+      }
+
+      function showQuestionsPage(event) {
+        if (event) event.preventDefault();
+        document.body.classList.remove('answer-mode');
+        const answerPage = document.getElementById('answer-q1');
+        answerPage.classList.remove('active');
+        answerPage.setAttribute('aria-hidden', 'true');
+        window.location.hash = 'short-answers';
+        window.scrollTo(0, 0);
+      }
+
+      function handleHashNavigation() {
+        if (window.location.hash === '#answer-q1') {
+          showAnswerPage();
+        } else {
+          document.body.classList.remove('answer-mode');
+          const answerPage = document.getElementById('answer-q1');
+          if (answerPage) {
+            answerPage.classList.remove('active');
+            answerPage.setAttribute('aria-hidden', 'true');
+          }
+        }
+      }
+
+      window.addEventListener('hashchange', handleHashNavigation);
+      handleHashNavigation();
+    </script>
+
+  
+<script>
+(function () {
+  "use strict";
+
+  let pythonRuntime = null;
+
+  async function loadPythonRuntime() {
+    if (pythonRuntime === null) {
+      if (typeof loadPyodide !== "function") {
+        throw new Error(
+          "Pyodide could not be loaded. Check your internet connection and refresh the page."
+        );
+      }
+
+      pythonRuntime = await loadPyodide({
+        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/"
+      });
+    }
+
+    return pythonRuntime;
+  }
+
+  async function runPythonExample(code, outputId, statusId, button) {
+    const outputElement = document.getElementById(outputId);
+    const statusElement = document.getElementById(statusId);
+
+    if (!outputElement || !statusElement || !button) {
+      console.error("Python example elements are missing.");
+      return;
+    }
+
+    const capturedOutput = [];
+
+    button.disabled = true;
+    outputElement.textContent = "Running...";
+    statusElement.textContent = "Loading Python runtime...";
+
+    try {
+      const pyodide = await loadPythonRuntime();
+
+      pyodide.setStdout({
+        batched: function (text) {
+          capturedOutput.push(String(text));
+        }
+      });
+
+      statusElement.textContent = "Executing Python code...";
+      await pyodide.runPythonAsync(code);
+
+      outputElement.textContent =
+        capturedOutput.length > 0
+          ? capturedOutput.join("\n")
+          : "(No output)";
+
+      statusElement.textContent = "Executed successfully";
+    } catch (error) {
+      outputElement.textContent =
+        "Error: " + String(error && error.message ? error.message : error);
+      statusElement.textContent = "Execution failed";
+      console.error("Python execution error:", error);
+    } finally {
+      button.disabled = false;
+    }
+  }
+
+  function connectPythonButton(buttonId, code, outputId, statusId) {
+    const button = document.getElementById(buttonId);
+
+    if (!button) {
+      console.warn("Button not found: " + buttonId);
+      return;
+    }
+
+    button.addEventListener("click", function () {
+      runPythonExample(code, outputId, statusId, button);
+    });
+  }
+
+  connectPythonButton(
+    "run-object-creation-code",
+    'x = 5\nname = "Python"\nnumbers = [1, 2, 3]\n\nprint(x)\nprint(name)\nprint(numbers)',
+    "object-creation-output",
+    "object-creation-status"
+  );
+
+  connectPythonButton(
+    "run-identity-type-value-code",
+    'x = 30\n\nprint("Identity:", id(x))\nprint("Type:", type(x))\nprint("Value:", x)',
+    "identity-type-value-output",
+    "identity-type-value-status"
+  );
+
+  connectPythonButton(
+    "run-dynamic-typing-code",
+    'value = 10\nprint(value)\n\nvalue = "Python"\nprint(value)',
+    "dynamic-typing-output",
+    "dynamic-typing-status"
+  );
+})();
+</script>
+
+</body>
+</html>
