@@ -488,8 +488,13 @@
       text-decoration: underline;
     }
 
-    body.answer-mode > *:not(#answer-q1) {
+    body.answer-mode > *:not(.answer-page.active) {
       display: none !important;
+    }
+
+    /* Keep the selected answer page visible, including Question 2. */
+    body.answer-mode .answer-page.active {
+      display: block !important;
     }
 
   
@@ -657,8 +662,10 @@
         </a>
       </article>
       <article class="question-item">
-        <strong>Question 2</strong>
-        <span>What are keywords and identifiers in Python?</span>
+        <a class="question-link" href="#answer-q2" onclick="showAnswerPage(event, 'answer-q2'); return false;">
+          <strong>Question 2: List and briefly explain any four standard types in Python?</strong>
+          <span class="question-arrow">View Answer →</span>
+        </a>
       </article>
       <article class="question-item">
         <strong>Question 3</strong>
@@ -919,37 +926,180 @@
 </div>
     </section>
 
+
+    <section id="answer-q2" class="answer-page" aria-hidden="true">
+      <div class="answer-page-inner">
+        <a class="back-link" href="#short-answers" onclick="showQuestionsPage(event)">← Back to Short Answer Questions</a>
+        <span class="answer-label">Question 2</span>
+        <h2>List and briefly explain any four standard types in Python?</h2>
+       
+
+
+        <h3>Standard Data Types in Python</h3>
+        <p>
+          Python provides several standard data types that are used to store and
+          manipulate data. These types define the nature of the data and the
+          operations that can be performed on it. Four commonly used standard
+          types are <b>Numeric, Sequence, Text, and Mapping</b>.
+        </p>
+
+        <section class="object-characteristic">
+          <h4>1. Numeric Types</h4>
+          <p>Numeric types represent numbers and allow mathematical operations.</p>
+          <ul>
+            <li><b>int:</b> Represents integer numbers without a decimal point. Example: <code>10</code>, <code>-45</code>, <code>1000</code>.</li>
+            <li><b>float:</b> Represents floating-point or decimal numbers. Example: <code>3.14</code>, <code>-0.5</code>, <code>2.0</code>.</li>
+            <li><b>complex:</b> Represents complex numbers in the form <code>a + bj</code>. Example: <code>2+3j</code>, <code>-5+0.6j</code>.</li>
+          </ul>
+        </section>
+
+        <div class="realtime-code-box" aria-label="Example program for numeric types">
+          <div class="code-box">
+            <div><span class="comment"># Numeric Types</span></div>
+            <div><span class="keyword">a</span> = 10       <span class="comment"># int</span></div>
+            <div><span class="keyword">b</span> = 3.14     <span class="comment"># float</span></div>
+            <div><span class="keyword">c</span> = 2+3j     <span class="comment"># complex</span></div>
+            <br>
+            <div><span class="function">print</span>(a)</div>
+            <div><span class="function">print</span>(b)</div>
+            <div><span class="function">print</span>(c)</div>
+          </div>
+        </div>
+
+        <section class="object-characteristic">
+          <h4>2. Sequence Types</h4>
+          <p>Sequence types store multiple items in an ordered collection. Elements can be accessed using indexing.</p>
+          <ul>
+            <li><b>list:</b> An ordered, mutable collection. Example: <code>[1, 2, 3, "Python"]</code>.</li>
+            <li><b>tuple:</b> An ordered, immutable collection. Example: <code>(1, 2, 3)</code>.</li>
+            <li><b>range:</b> Represents a sequence of numbers, often used in loops. Example: <code>range(0, 5)</code> produces <code>0, 1, 2, 3, 4</code>.</li>
+          </ul>
+        </section>
+
+        <div class="realtime-code-box" aria-label="Example program for sequence types">
+          <div class="code-box">
+            <div><span class="comment"># Sequence Types</span></div>
+            <div><span class="keyword">my_list</span> = [1, 2, 3]</div>
+            <div><span class="keyword">my_tuple</span> = (4, 5, 6)</div>
+            <div><span class="keyword">my_range</span> = range(0, 5)</div>
+            <br>
+            <div><span class="function">print</span>(my_list)</div>
+            <div><span class="function">print</span>(my_tuple)</div>
+            <div><span class="function">print</span>(list(my_range))</div>
+          </div>
+        </div>
+
+        <section class="object-characteristic">
+          <h4>3. Text Type</h4>
+          <p>The text type is used to store string data, which is a sequence of characters.</p>
+          <ul>
+            <li><b>str:</b> Represents a Unicode string enclosed in single quotes, double quotes, or triple quotes.</li>
+          </ul>
+          <p><b>Examples:</b> <code>"Python"</code>, <code>'Hello'</code>, <code>"""Multiline String"""</code></p>
+        </section>
+
+        <div class="realtime-code-box" aria-label="Example program for text type">
+          <div class="code-box">
+            <div><span class="comment"># Text Type</span></div>
+            <div><span class="keyword">name</span> = <span class="string">"Python Programming"</span></div>
+            <div><span class="function">print</span>(name)</div>
+          </div>
+        </div>
+
+        <section class="object-characteristic">
+          <h4>4. Mapping Type</h4>
+          <p>Mapping types store data in key-value pairs. Each key is used to access its corresponding value.</p>
+          <ul>
+            <li><b>dict:</b> Represents a collection of key-value pairs. Dictionaries are mutable, and each key must be unique. Example: <code>{"name": "Python", "version": 3}</code>.</li>
+          </ul>
+        </section>
+
+        <div class="realtime-code-box" aria-label="Example program for mapping type">
+          <div class="code-box">
+            <div><span class="comment"># Mapping Type</span></div>
+            <div><span class="keyword">student</span> = {</div>
+            <div>    <span class="string">"name"</span>: <span class="string">"Lakshman"</span>,</div>
+            <div>    <span class="string">"course"</span>: <span class="string">"B.Sc Computer Science"</span>,</div>
+            <div>    <span class="string">"year"</span>: 2026</div>
+            <div>}</div>
+            <br>
+            <div><span class="function">print</span>(student[<span class="string">"name"</span>])</div>
+            <div><span class="function">print</span>(student[<span class="string">"course"</span>])</div>
+          </div>
+        </div>
+
+        <section class="object-characteristic">
+          <h4>4. Mapping Type</h4>
+          <p>
+            The mapping type stores data in the form of key-value pairs.
+            The commonly used mapping type in Python is <code>dict</code>.
+            Keys must be unique and immutable, while values can be of any data type.
+          </p>
+          <p><b>Example:</b> <code>{"name": "Lakshman", "age": 20}</code></p>
+        </section>
+
+        <div class="realtime-code-box" aria-label="Example program for mapping type">
+          <div class="code-box">
+            <div><span class="comment"># Mapping Type</span></div>
+            <div><span class="keyword">student</span> = {"name": "Lakshman", "age": 20}</div>
+            <div><span class="function">print</span>(student)</div>
+            <div><span class="function">print</span>(student["name"])</div>
+          </div>
+        </div>
+
+        <h3>Conclusion</h3>
+        <p>
+          Thus, <b>Numeric, Sequence, Text, and Mapping</b> are four standard
+          data types in Python. They help programmers store, organize, and
+          manipulate different kinds of data efficiently.
+        </p>
+      </div>
+    </section>
+
     <script>
-      function showAnswerPage(event) {
+      function showAnswerPage(event, answerId = 'answer-q1') {
         if (event) event.preventDefault();
         document.body.classList.add('answer-mode');
-        const answerPage = document.getElementById('answer-q1');
-        answerPage.classList.add('active');
-        answerPage.setAttribute('aria-hidden', 'false');
-        window.location.hash = 'answer-q1';
+
+        document.querySelectorAll('.answer-page').forEach(function (page) {
+          page.classList.remove('active');
+          page.setAttribute('aria-hidden', 'true');
+        });
+
+        const answerPage = document.getElementById(answerId);
+        if (answerPage) {
+          answerPage.classList.add('active');
+          answerPage.setAttribute('aria-hidden', 'false');
+          window.location.hash = answerId;
+        }
         window.scrollTo(0, 0);
       }
 
       function showQuestionsPage(event) {
         if (event) event.preventDefault();
         document.body.classList.remove('answer-mode');
-        const answerPage = document.getElementById('answer-q1');
-        answerPage.classList.remove('active');
-        answerPage.setAttribute('aria-hidden', 'true');
+
+        document.querySelectorAll('.answer-page').forEach(function (page) {
+          page.classList.remove('active');
+          page.setAttribute('aria-hidden', 'true');
+        });
+
         window.location.hash = 'short-answers';
         window.scrollTo(0, 0);
       }
 
       function handleHashNavigation() {
-        if (window.location.hash === '#answer-q1') {
-          showAnswerPage();
+        const hash = window.location.hash.replace('#', '');
+        const page = document.getElementById(hash);
+
+        if (page && page.classList.contains('answer-page')) {
+          showAnswerPage(null, hash);
         } else {
           document.body.classList.remove('answer-mode');
-          const answerPage = document.getElementById('answer-q1');
-          if (answerPage) {
+          document.querySelectorAll('.answer-page').forEach(function (answerPage) {
             answerPage.classList.remove('active');
             answerPage.setAttribute('aria-hidden', 'true');
-          }
+          });
         }
       }
 
