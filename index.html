@@ -668,16 +668,25 @@
         </a>
       </article>
       <article class="question-item">
-        <strong>Question 3</strong>
-        <span>What is a variable? How is a variable created in Python?</span>
+  <a class="question-link" href="#answer-q3"
+     onclick="showAnswerPage(event, 'answer-q3'); return false;">
+    <strong>Question 3: Differentiate between mutable and immutable types with examples.</strong>
+    <span class="question-arrow">View Answer →</span>
+  </a>
+</article>
+      <article class="question-item">
+        <a class="question-link" href="#answer-q4"
+           onclick="showAnswerPage(event, 'answer-q4'); return false;">
+          <strong>Question 4: What is indentation in Python and why is it important?</strong>
+          <span class="question-arrow">View Answer →</span>
+        </a>
       </article>
       <article class="question-item">
-        <strong>Question 4</strong>
-        <span>What is an object in Python?</span>
-      </article>
-      <article class="question-item">
-        <strong>Question 5</strong>
-        <span>Explain object identity, type, and value.</span>
+        <a class="question-link" href="#answer-q5"
+           onclick="showAnswerPage(event, 'answer-q5'); return false;">
+          <strong>Question 5: What are other built-in types in Python?</strong>
+          <span class="question-arrow">View Answer →</span>
+        </a>
       </article>
       <article class="question-item">
         <strong>Question 6</strong>
@@ -781,9 +790,9 @@
         <h2>Define a Python object and explain how it stores data?</h2>
         <h3>Python Object - Definition &amp; Data Storage:</h3>
        <p>
-          In Python, <b> everything is treated as an object </b>, whether it is a number,
+         A Python object is an entity that has three main characteristics: identity, type, and value. In Python, <b> everything is treated as an object </b>, whether it is a number,
           a string, a list, a function, or even a class. Every object has an identity,
-          a type, and a value. Objects store data in memory, and variables hold
+          a type, and a value.A Python object is an entity that has an identity, type, and value. Objects store data in memory, and variables hold
           references to these objects rather than directly storing the data itself.
           For example, in <code>x = 10</code>, the integer object <code>10</code>
           is stored in memory and <code>x</code> refers to that object.
@@ -978,9 +987,52 @@
           <p>Sequence types store multiple items in an ordered collection. Elements can be accessed using indexing.</p>
           <ul>
             <li><b>list:</b> An ordered, mutable collection. Example: <code>[1, 2, 3, "Python"]</code>.</li>
+            <div class="realtime-code-box" aria-label="Example program for list mutability">
+  <div class="code-box">
+    <div><span class="keyword">numbers</span> = [10, 20, 30]</div>
+    <div><span class="keyword">numbers</span>[1] = 50</div>
+    <br>
+    <div><span class="function">print</span>(numbers)</div>
+  </div>
+</div>
+<h4>Output</h4>
+<div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px; min-height: 180px;">
+  <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+    <div>[10, 50, 30]</div>
+  </div>
+</div>
             <li><b>tuple:</b> An ordered, immutable collection. Example: <code>(1, 2, 3)</code>.</li>
+            <div class="realtime-code-box" aria-label="Example program for tuple types">
+  <div class="code-box">
+    <div><span class="keyword">numbers</span> = (10, 20, 30)</div>
+    <br>
+    <div><span class="function">print</span>(numbers)</div>
+  </div>
+</div>
+<h4>Output</h4>
+<div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px; min-height: 180px;">
+  <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+    <div>(10, 20, 30)</div>
+  </div>
+</div>
             <li><b>range:</b> Represents a sequence of numbers, often used in loops. Example: <code>range(0, 5)</code> produces <code>0, 1, 2, 3, 4</code>.</li>
           </ul>
+          <div class="realtime-code-box" aria-label="Example program for range function">
+  <div class="code-box">
+    <div><span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(5):</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">print</span>(i)</div>
+  </div>
+</div>
+<h4>Output</h4>
+<div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px; min-height: 180px;">
+  <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+    <div>0</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </div>
+</div>
         </section>
 
         <div class="realtime-code-box" aria-label="Example program for sequence types">
@@ -995,12 +1047,19 @@
             <div><span class="function">print</span>(list(my_range))</div>
           </div>
         </div>
-
+<h4>Output</h4>
+<div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px; min-height: 180px;">
+  <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+    <div>[1, 2, 3]</div>
+    <div>(4, 5, 6)</div>
+    <div>[0, 1, 2, 3, 4]</div>
+  </div>
+</div>
         <section class="object-characteristic">
           <h4>3. Text Type</h4>
           <p>The text type is used to store string data, which is a sequence of characters.</p>
           <ul>
-            <li><b>str:</b> Represents a Unicode string enclosed in single quotes, double quotes, or triple quotes.</li>
+            <li><b>str:</b> Represents a Unicode string enclosed in single quotes<code>''</code>, double quotes<code>""</code>, or triple quotes<code>""" """</code>.</li>
           </ul>
           <p><b>Examples:</b> <code>"Python"</code>, <code>'Hello'</code>, <code>"""Multiline String"""</code></p>
         </section>
@@ -1012,39 +1071,40 @@
             <div><span class="function">print</span>(name)</div>
           </div>
         </div>
-
+<h4>Output</h4>
+<div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px; min-height: 180px;">
+  <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+    <div>Python Programming</div>
+  </div>
+</div>
         <section class="object-characteristic">
           <h4>4. Mapping Type</h4>
-          <p>Mapping types store data in key-value pairs. Each key is used to access its corresponding value.</p>
+          <p>Mapping types store data as key-value pairs. Each key is used to access its corresponding value.</p>
           <ul>
             <li><b>dict:</b> Represents a collection of key-value pairs. Dictionaries are mutable, and each key must be unique. Example: <code>{"name": "Python", "version": 3}</code>.</li>
           </ul>
         </section>
 
-        <div class="realtime-code-box" aria-label="Example program for mapping type">
-          <div class="code-box">
-            <div><span class="comment"># Mapping Type</span></div>
-            <div><span class="keyword">student</span> = {</div>
-            <div>    <span class="string">"name"</span>: <span class="string">"Lakshman"</span>,</div>
-            <div>    <span class="string">"course"</span>: <span class="string">"B.Sc Computer Science"</span>,</div>
-            <div>    <span class="string">"year"</span>: 2026</div>
-            <div>}</div>
-            <br>
-            <div><span class="function">print</span>(student[<span class="string">"name"</span>])</div>
-            <div><span class="function">print</span>(student[<span class="string">"course"</span>])</div>
-          </div>
-        </div>
+        <div class="code-box">
+  <div><span class="comment"># Mapping Type</span></div>
+  <div><span class="keyword">student</span> = {</div>
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"name"</span>: <span class="string">"Lakshman"</span>,</div>
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"course"</span>: <span class="string">"B.Sc Computer Science"</span>,</div>
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"year"</span>: 2026</div>
+  <div>}</div>
+  <br>
+  <div><span class="function">print</span>(student[<span class="string">"name"</span>])</div>
+  <div><span class="function">print</span>(student[<span class="string">"course"</span>])</div>
+</div>
 
-        <section class="object-characteristic">
-          <h4>4. Mapping Type</h4>
-          <p>
-            The mapping type stores data in the form of key-value pairs.
-            The commonly used mapping type in Python is <code>dict</code>.
-            Keys must be unique and immutable, while values can be of any data type.
-          </p>
-          <p><b>Example:</b> <code>{"name": "Lakshman", "age": 20}</code></p>
-        </section>
-
+<h4>Output</h4>
+<div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px; min-height: 180px;">
+  <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+    <div>Lakshman</div>
+    <div>B.Sc Computer Science</div>
+  </div>
+</div>
+<br>
         <div class="realtime-code-box" aria-label="Example program for mapping type">
           <div class="code-box">
             <div><span class="comment"># Mapping Type</span></div>
@@ -1053,7 +1113,13 @@
             <div><span class="function">print</span>(student["name"])</div>
           </div>
         </div>
-
+<h4>Output</h4>
+<div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px; min-height: 180px;">
+  <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+    <div>{'name': 'Lakshman', 'age': 20}</div>
+    <div>Lakshman</div>
+  </div>
+</div>
         <h3>Conclusion</h3>
         <p>
           Thus, <b>Numeric, Sequence, Text, and Mapping</b> are four standard
@@ -1062,6 +1128,315 @@
         </p>
       </div>
     </section>
+<!-- Question 3 Answer Page -->
+<section id="answer-q3" class="answer-page" aria-hidden="true">
+  <div class="answer-page-inner">
+
+    <a class="back-link" href="#short-answers"
+       onclick="showQuestionsPage(event)">
+      ← Back to Short Answer Questions
+    </a>
+
+    <span class="answer-label">Question 3</span>
+
+    <h2>Differentiate between mutable and immutable types with examples.</h2>
+
+    <h3>Mutable and Immutable Types in Python</h3>
+
+    <p>
+      In Python, data types are classified into two categories based on whether
+      their content (value) can be changed after creation: <b>mutable</b> and
+      <b>immutable</b> types.
+    </p>
+
+    <h3>1. Mutable Types</h3>
+
+    <p>
+      Mutable types are data types whose content (value) can be changed after
+      the object is created. Elements can be added, removed, or modified
+      without creating a new object.
+    </p>
+
+    <div class="object-characteristic">
+      <h4>Characteristics of Mutable Types</h4>
+      <ul>
+        <li><b>Changeable Content:</b> Values can be updated after creation.</li>
+        <li><b>Same Object Identity:</b> When modified in place, the object generally retains the same identity (<code>id</code>).</li>
+        <li><b>Dynamic Nature:</b> Some mutable objects can grow or shrink in size.</li>
+        <li><b>Efficient for Frequent Updates:</b> Suitable when data changes often.</li>
+      </ul>
+    </div>
+
+    <h4>Advantages</h4>
+    <ul>
+      <li>Can be modified without creating a new object.</li>
+      <li>Useful when data needs frequent updates.</li>
+    </ul>
+
+    <h4>Disadvantages</h4>
+    <ul>
+      <li>More prone to accidental changes (side effects).</li>
+      <li>Some operations may be slower than operations on immutable objects.</li>
+    </ul>
+
+    <h3>Example of a Mutable Type</h3>
+
+    <p>
+      A <b>list</b> is a mutable type because its elements can be modified
+      after creation.
+    </p>
+
+    <div class="code-box">
+      <div><span class="comment"># Mutable Type: List</span></div>
+      <div><span class="keyword">numbers</span> = [10, 20, 30]</div>
+      <div><span class="function">print</span>(<span class="string">"Before modification:"</span>, numbers)</div>
+      <br>
+      <div>numbers[1] = 50</div>
+      <br>
+      <div><span class="function">print</span>(<span class="string">"After modification:"</span>, numbers)</div>
+    </div>
+
+    <h4>Output</h4>
+    <div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px;">
+      <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+        <div>Before modification: [10, 20, 30]</div>
+        <div>After modification: [10, 50, 30]</div>
+      </div>
+    </div>
+
+    <p>
+      Here, the list is modified in place. The object itself remains the same,
+      while its content changes.
+    </p>
+
+    <h3>2. Immutable Types</h3>
+
+    <p>
+      Immutable types are data types whose value cannot be changed after the
+      object is created. If you try to modify an immutable object, Python
+      creates a new object, and the variable refers to the new object instead
+      of changing the original.
+    </p>
+
+    <div class="object-characteristic">
+      <h4>Characteristics of Immutable Types</h4>
+      <ul>
+        <li><b>Unchangeable Content:</b> Once created, the value cannot be altered.</li>
+        <li><b>New Object Creation:</b> A different value requires a new object.</li>
+        <li><b>Safe from Accidental Changes:</b> Useful when data must remain constant.</li>
+        <li><b>Reliable Data:</b> Values cannot be changed in place after creation.</li>
+      </ul>
+    </div>
+
+    <h4>Advantages</h4>
+    <ul>
+      <li>Protects data from accidental changes.</li>
+      <li>Can be used as dictionary keys when the object is hashable.</li>
+      <li>Useful for representing constant values.</li>
+    </ul>
+
+    <h4>Disadvantages</h4>
+    <ul>
+      <li>Modification requires creating a new object.</li>
+      <li>Repeated changes may involve additional object creation.</li>
+    </ul>
+
+    <h3>Example of an Immutable Type</h3>
+
+    <p>
+      A <b>tuple</b> is an immutable type because its elements cannot be
+      changed after creation.
+    </p>
+
+    <div class="code-box">
+      <div><span class="comment"># Immutable Type: Tuple</span></div>
+      <div><span class="keyword">numbers</span> = (10, 20, 30)</div>
+      <br>
+      <div><span class="function">print</span>(<span class="string">"Original tuple:"</span>, numbers)</div>
+      <br>
+      <div><span class="comment"># numbers[1] = 50  # TypeError</span></div>
+      <div>numbers = (10, 50, 30)</div>
+      <br>
+      <div><span class="function">print</span>(<span class="string">"New tuple:"</span>, numbers)</div>
+    </div>
+
+    <h4>Output</h4>
+    <div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px;">
+      <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+        <div>Original tuple: (10, 20, 30)</div>
+        <div>New tuple: (10, 50, 30)</div>
+      </div>
+    </div>
+
+    <p>
+      Here, the original tuple is not modified. Reassigning
+      <code>numbers</code> makes it refer to a new tuple.
+    </p>
+
+    <h3>Difference Between Mutable and Immutable Types</h3>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+        <thead>
+          <tr style="background: #e3f2fd;">
+            <th style="border: 1px solid #cbd5e1; padding: 12px; text-align: left;">Feature</th>
+            <th style="border: 1px solid #cbd5e1; padding: 12px; text-align: left;">Mutable Types</th>
+            <th style="border: 1px solid #cbd5e1; padding: 12px; text-align: left;">Immutable Types</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">Meaning</td>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">Content can be changed.</td>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">Content cannot be changed.</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">Modification</td>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">Can be modified in place.</td>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">A new object is created for a different value.</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">Examples</td>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;"><code>list</code>, <code>dict</code>, <code>set</code></td>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;"><code>int</code>, <code>float</code>, <code>str</code>, <code>tuple</code></td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">Use</td>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">Suitable for frequently changing data.</td>
+            <td style="border: 1px solid #cbd5e1; padding: 12px;">Suitable for constant or unchanging data.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Conclusion</h3>
+
+    <p>
+      Thus, mutable objects can be changed after creation, whereas immutable
+      objects cannot be changed in place. Understanding this difference helps
+      programmers choose the appropriate data type and avoid unexpected
+      changes in Python programs.
+    </p>
+
+  </div>
+</section>
+
+<!-- Question 4 Answer Page -->
+<section id="answer-q4" class="answer-page" aria-hidden="true">
+  <div class="answer-page-inner">
+
+    <a class="back-link" href="#short-answers"
+       onclick="showQuestionsPage(event)">
+      ← Back to Short Answer Questions
+    </a>
+
+    <span class="answer-label">Question 4</span>
+
+    <h2>What is indentation in Python and why is it important?</h2>
+
+    <h3>Indentation in Python</h3>
+
+    <p>
+      Indentation in Python refers to the use of whitespace, typically spaces or
+      tabs, at the beginning of a line of code. It is used to define the
+      structure and hierarchy of code blocks, such as those within loops,
+      conditional statements, functions, and classes.
+    </p>
+
+    <p>
+      Unlike many other programming languages that use braces
+      <code>{}</code> or keywords such as <code>end</code> to denote code
+      blocks, Python relies on indentation. Python requires consistent
+      indentation within a block. All statements at the same indentation level
+      belong to the same block, and a change in indentation signals the start
+      or end of a block.
+    </p>
+
+    <p>
+      Python's standard convention is to use <b>four (4) spaces</b> for each
+      indentation level.
+    </p>
+
+    <h3>Example</h3>
+
+    <div class="code-box" aria-label="Python indentation example">
+      <div><span class="keyword">if</span> <span class="keyword">True</span>:</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">print</span>(<span class="string">"This is indented"</span>)</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">print</span>(<span class="string">"Still in the block"</span>)</div>
+      <br>
+      <div><span class="function">print</span>(<span class="string">"Outside the block"</span>)</div>
+    </div>
+
+    <h4>Output</h4>
+
+    <div style="border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 20px; margin: 12px 0 18px;">
+      <div style="font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.8; color: #111827;">
+        <div>This is indented</div>
+        <div>Still in the block</div>
+        <div>Outside the block</div>
+      </div>
+    </div>
+
+    <p>
+      In this <code>if</code> statement, the first two
+      <code>print()</code> statements are part of the <code>if</code> block
+      because they are indented. The third <code>print()</code> statement is
+      outside the <code>if</code> block because it is at the same indentation
+      level as the <code>if</code> keyword.
+    </p>
+
+    <h3>Importance of Indentation in Python</h3>
+
+    <div class="object-characteristic">
+      <h4>1. Defines Scope</h4>
+      <p>
+        Indentation groups statements into blocks for conditional statements,
+        loops, functions, and classes.
+      </p>
+    </div>
+
+    <div class="object-characteristic">
+      <h4>2. Ensures Readability</h4>
+      <p>
+        It makes the structure of the program clear and easy to understand.
+      </p>
+    </div>
+
+    <div class="object-characteristic">
+      <h4>3. Prevents Errors</h4>
+      <p>
+        Correct and consistent indentation helps avoid syntax errors and
+        unintended program behavior.
+      </p>
+    </div>
+
+    <div class="object-characteristic">
+      <h4>4. Syntactic Requirement</h4>
+      <p>
+        Python uses indentation instead of braces to define code blocks, making
+        indentation an essential part of Python syntax.
+      </p>
+    </div>
+
+    <div class="object-characteristic">
+      <h4>5. Supports Collaboration</h4>
+      <p>
+        Consistent indentation improves code clarity and makes programs easier
+        to read and maintain in team projects.
+      </p>
+    </div>
+
+    <h3>Conclusion</h3>
+
+    <p>
+      Thus, indentation is an essential feature of Python. It defines the
+      structure of code blocks, improves readability, and ensures that Python
+      programs are written correctly. Consistent indentation is necessary for
+      developing clear and well-structured programs.
+    </p>
+
+  </div>
+</section>
 
     <script>
       function showAnswerPage(event, answerId = 'answer-q1') {
@@ -1215,6 +1590,125 @@
   );
 })();
 </script>
+
+
+
+<!-- Question 5 Answer Page -->
+<section id="answer-q5" class="answer-page" aria-hidden="true">
+  <div class="answer-page-inner">
+    <a class="back-link" href="#short-answers"
+       onclick="showQuestionsPage(event)">
+      ← Back to Short Answer Questions
+    </a>
+
+    <span class="answer-label">Question 5</span>
+
+    <h2>What are other built-in types in Python?</h2>
+
+    <h3>Other Built-in Types in Python</h3>
+    <p>
+      In Python, built-in types are the fundamental data types provided by the
+      language without requiring external libraries. Beyond simple data types
+      like numbers and strings, Python has several built-in types that are
+      useful for handling binary data, immutable collections, sequences, and
+      specialized data structures.
+    </p>
+
+    <section class="object-characteristic">
+      <h4>1. Bytes</h4>
+      <p>
+        <b>Bytes</b> is an immutable sequence of bytes. It is commonly used for
+        binary data, file input/output, and network data.
+      </p>
+      <p><b>Example:</b> <code>b"Hello"</code></p>
+    </section>
+
+    <section class="object-characteristic">
+      <h4>2. Bytearray</h4>
+      <p>
+        <b>Bytearray</b> is a mutable sequence of bytes. Unlike bytes, its
+        contents can be modified after creation.
+      </p>
+      <p><b>Example:</b> <code>bytearray(b"Hello")</code></p>
+    </section>
+
+    <section class="object-characteristic">
+      <h4>3. Frozenset</h4>
+      <p>
+        <b>Frozenset</b> is the immutable version of a set. It stores unique
+        elements and can be used as a hashable, unchangeable collection.
+      </p>
+      <p><b>Example:</b> <code>frozenset([1, 2, 3])</code></p>
+    </section>
+
+    <section class="object-characteristic">
+      <h4>4. Range</h4>
+      <p>
+        <b>Range</b> represents an immutable sequence of numbers. It is often
+        used in loops to generate a sequence of values.
+      </p>
+      <p><b>Example:</b> <code>range(0, 5)</code> produces the values
+        <code>0, 1, 2, 3, 4</code>.</p>
+    </section>
+
+    <section class="object-characteristic">
+      <h4>5. Complex</h4>
+      <p>
+        <b>Complex</b> represents complex numbers containing real and imaginary
+        parts. Complex numbers are written using the form <code>a + bj</code>.
+      </p>
+      <p><b>Example:</b> <code>2 + 3j</code></p>
+    </section>
+
+    <section class="object-characteristic">
+      <h4>6. NoneType</h4>
+      <p>
+        <b>NoneType</b> is the type of the <code>None</code> object. It
+        indicates the absence of a value or that a variable does not currently
+        contain a meaningful value.
+      </p>
+      <p><b>Example:</b> <code>result = None</code></p>
+    </section>
+
+    <section class="object-characteristic">
+      <h4>7. Memoryview</h4>
+      <p>
+        <b>Memoryview</b> provides a memory-efficient view of objects such as
+        bytes and bytearrays. It is useful for advanced data manipulation
+        without copying the underlying data.
+      </p>
+      <p><b>Example:</b> <code>memoryview(b"Python")</code></p>
+    </section>
+
+    <h3>Example Program</h3>
+    <div class="code-box">
+      <div><span class="comment"># Other Built-in Types</span></div>
+      <div><span class="keyword">data</span> = <span class="string">b"Hello"</span></div>
+      <div><span class="keyword">mutable_data</span> = bytearray(b"Hello")</div>
+      <div><span class="keyword">fixed_set</span> = frozenset([1, 2, 3])</div>
+      <div><span class="keyword">numbers</span> = range(5)</div>
+      <div><span class="keyword">complex_num</span> = 2 + 3j</div>
+      <div><span class="keyword">result</span> = None</div>
+      <div><span class="keyword">view</span> = memoryview(b"Python")</div>
+      <br>
+      <div><span class="function">print</span>(data)</div>
+      <div><span class="function">print</span>(mutable_data)</div>
+      <div><span class="function">print</span>(fixed_set)</div>
+      <div><span class="function">print</span>(list(numbers))</div>
+      <div><span class="function">print</span>(complex_num)</div>
+      <div><span class="function">print</span>(result)</div>
+      <div><span class="function">print</span>(view)</div>
+    </div>
+
+    <h4>Conclusion</h4>
+    <p>
+      Thus, Python provides several additional built-in types such as bytes,
+      bytearray, frozenset, range, complex, NoneType, and memoryview. These
+      types help programmers work with binary data, immutable collections,
+      numeric values, and memory-efficient data structures.
+    </p>
+  </div>
+</section>
 
 </body>
 </html>
